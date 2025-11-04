@@ -1,0 +1,260 @@
+/* ========== RESET & GLOBAL ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+header {
+  background-color: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ========== MAIN CONTAINER ========== */
+main.container {
+  flex: 1;
+  padding: 40px 60px;
+  background-color: #e6e6e6; /* màu xám nhẹ nền container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ========== SUMMARY (Thống kê tổng quan) ========== */
+.summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 60px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h3 {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.stat-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #222;
+  margin-top: 8px;
+}
+
+/* ========== CHARTS SECTION ========== */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.chart-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.chart-card:hover {
+  transform: scale(1.01);
+}
+
+.chart-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+canvas {
+  width: 100%;
+  height: 320px;
+}
+
+/* Bao ngoài hai biểu đồ và nút */
+.charts-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 2rem;
+}
+
+/* Nút căn giữa bên dưới */
+#toggleRankBtn {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #224bd3;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+#toggleRankBtn:hover {
+  background-color: #1d37b7;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* ==== BẢNG TOP LIST ==== */
+      .toplist-section {
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 940px; /* Giống tổng 2 chart (450 + 450 + khoảng cách) */
+        margin-top: -8px auto;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+
+      .table-container {
+        max-height: 350px; /* chiều cao tương đương khoảng 5 dòng */
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 940px; /* bằng 2 chart phía trên */
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Cuộn thanh scrollbar đẹp hơn */
+      .table-container::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .table-container::-webkit-scrollbar-thumb {
+        background: #aaa;
+        border-radius: 6px;
+      }
+
+      .table-container::-webkit-scrollbar-thumb:hover {
+        background: #777;
+      }
+
+
+
+      th, td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background: #222;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .Viral {
+        color: #28a745;
+        font-weight: bold;
+      }
+
+      .Trend {
+        color: #07a8ff;
+        font-weight: bold;
+      }
+
+      .NotViral {
+        color: #ffc107;
+        font-weight: bold;
+      }
+
+      .OutMeta {
+        color: #ff0707;
+        font-weight: bold;
+      }
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #c0392b;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  color: white;
+  padding: 25px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  main.container {
+    padding: 20px;
+  }
+  .stat-card {
+    padding: 20px 40px;
+  }
+
+  #toggleRankBtn {
+    position: static;
+    transform: none;
+    margin-top: 1.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+
+

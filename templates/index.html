@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Stats Dashboard</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>📊 YouTube Channel Statistics Dashboard</h1>
+      <p class="subtitle">Theo dõi lượt xem và người đăng ký theo thời gian thực</p>
+    </header>
+
+    <main class="container">
+      <!-- Thông tin tổng quan -->
+      <section class="summary">
+
+        <div class="stat-card">
+          <h3>Tổng số view</h3>
+          <p id="totalViews">--</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Tổng số subscribe</h3>
+          <p id="totalSubs">--</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Tổng số channel</h3>
+          <p id="totalChannels">--</p>
+        </div>
+      </section>
+
+      <!-- Biểu đồ -->
+      <section class="charts-wrapper">
+        <div class="charts">
+        <div class="chart-card">
+          <h2>📈 Biểu đồ lượt xem</h2>
+          <canvas id="viewsChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h2>👥 Biểu đồ người đăng ký</h2>
+          <canvas id="subsChart"></canvas>
+        </div>
+
+        <div class="toggle-button-container">
+        <button id="toggleRankBtn" class="btn btn-secondary">Xem kênh thấp nhất</button>
+        </div>
+        </div>
+      </section>
+
+      <!-- Bảng Top List -->
+      <section class="toplist-section">
+        <h2>🏆 Danh sách các kênh được gán nhãn</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tên kênh</th>
+                <th>Lượt xem</th>
+                <th>Đăng ký</th>
+                <th>Final Label</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in data %}
+              <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ "{:,}".format(row.views) }}</td>
+                <td>{{ "{:,}".format(row.subscribers) }}</td>
+                <td class="{{ row.FinalLabel }}">{{ row.FinalLabel }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <h3>Copyright ©DA_HK251_2025</h3>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  </body>
+</html>
