@@ -30,10 +30,13 @@
 
 
       <form method="POST">
-        <input type="text" name="username" placeholder="Tên đăng nhập hoặc email" required>
-        <input type="password" name="password" placeholder="Mật khẩu" required>
-        <button type="submit">{{ "Đăng ký" if mode == "register" else "Đăng nhập" }}</button>
-      </form>
+                {% if mode == "register" %}
+                    <input type="text" name="display_name" placeholder="Tên hiển thị" required>
+                {% endif %}
+                <input type="text" name="username" placeholder="Tên đăng nhập hoặc email" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <button type="submit">{{ "Đăng ký" if mode == "register" else "Đăng nhập" }}</button>
+            </form>
 
       <div class="toggle">
         {% if mode == "register" %}
