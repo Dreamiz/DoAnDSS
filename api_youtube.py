@@ -3,12 +3,14 @@ import json
 import sqlite3
 import warnings
 from time import sleep
+from pathlib import Path
 from dotenv import load_dotenv
 from typing import List, Optional, Dict
 from googleapiclient.discovery import build
 from database import save_channel_stats, init_db
 
 warnings.filterwarnings("ignore")
+BASE_DIR = Path(__file__).parent
 load_dotenv()
 init_db()
 
@@ -16,9 +18,15 @@ API_KEYS = [os.getenv(f"API_KEY_{i}") for i in range(1, 6) if os.getenv(f"API_KE
 
 import json
 
-def load_channel_groups(path="D:\\Quan\\Practice_Data\\my_flask_app\\channel.json"):
+def load_channel_groups(path=None):
+    # Nếu path không được cung cấp, sử dụng đường dẫn tương đối
+    if path is None:
+        path = BASE_DIR / "channel.json"  # Tương đương với BASE_DIR/channel.json
+
+    # Mở tệp bằng path đã được xác định
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
+        return data # Nên trả về data
     
     # Lấy từng nhóm (trả về dict)
     channel_groups = {}
