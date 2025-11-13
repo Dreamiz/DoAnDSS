@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập / Đăng ký</title>
+
+  <link 
+    rel="stylesheet"
+    href="{{ url_for('static', filename='authStyle.css') }}"
+  /> 
+
+</head>
+
+<body>
+  <div class="auth-wrapper">
+    <div class="app-header">
+      <img src="{{ url_for('static', filename='images/youtube.png') }}" alt="YouTube Logo">
+      <span>YouTube Channel Statistics Dashboard</span>
+    </div>
+
+    <div class="container">
+      <h2>{{ "Đăng ký" if mode == "register" else "Đăng nhập" }}</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% set category, message = messages[-1] %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endif %}
+      {% endwith %}
+
+
+      <form method="POST">
+        <input type="text" name="username" placeholder="Tên đăng nhập hoặc email" required>
+        <input type="password" name="password" placeholder="Mật khẩu" required>
+        <button type="submit">{{ "Đăng ký" if mode == "register" else "Đăng nhập" }}</button>
+      </form>
+
+      <div class="toggle">
+        {% if mode == "register" %}
+          <p>Đã có tài khoản? <a href="{{ url_for('auth', mode='login') }}">Đăng nhập</a></p>
+        {% else %}
+          <p>Chưa có tài khoản? <a href="{{ url_for('auth', mode='register') }}">Đăng ký</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

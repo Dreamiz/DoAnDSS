@@ -1,48 +1,81 @@
-name,views,subscribers,Pred_View,Pred_Sub,FinalLabel
-ToRung,13150918357,59400000,HighView,HighSub,Viral
-BEN EAGLE,34096774803,47000000,HighView,HighSub,Viral
-H&T Official,14338595060,25800000,HighView,HighSub,Viral
-Like Nastya VNM,13493164521,23000000,HighView,HighSub,Viral
-POPS Kids,15114278096,19700000,HighView,HighSub,Viral
-Nam Phương,11615450688,19100000,HighView,HighSub,Viral
-Trần Thị Thu Trang,8116643394,18400000,HighView,HighSub,Viral
-BingGo Leaders,23481061631,18000000,HighView,HighSub,Viral
-Kênh Thiếu Nhi - BHMEDIA,13062552382,14500000,HighView,HighSub,Viral
-FAPTV,5802033974,14300000,HighView,HighSub,Viral
-CiiN Bùi Thảo Ly,4062132148,12100000,LowView,HighSub,OutMeta
-Vie Channel ,4576279415,11500000,LowView,LowSub,NotViral
-Sơn Tùng M-TP Official,3403026164,11500000,LowView,LowSub,NotViral
-TonyTV,10254089397,11300000,HighView,HighSub,Viral
-Cris Devil Gamer,3352218847,11200000,LowView,LowSub,NotViral
-Oppa Huy IDol,21757598998,11100000,HighView,HighSub,Viral
-Lâm Vlog,4399609363,11000000,LowView,LowSub,NotViral
-T-STUDIO,1563714142,10500000,LowView,LowSub,NotViral
-Thơ Nguyễn,6677419624,10500000,HighView,LowSub,Trend
-Phung An Family,4552590847,10400000,LowView,LowSub,NotViral
-NTN,2570592202,10300000,LowView,LowSub,NotViral
-BiBoBen Shorts,13449235428,10000000,HighView,HighSub,Viral
-ĐÔNG TÂY PROMOTION OFFICIAL,6514134919,9800000,HighView,LowSub,Trend
-Kam Family,6495962428,9520000,HighView,LowSub,Trend
-PHD - Phương Hữu Dưỡng,5482802869,9460000,LowView,LowSub,NotViral
-BabyBus - Nhạc thiếu nhi,9950408539,9390000,HighView,HighSub,Viral
-Lang Lieu,7059024770,9230000,HighView,LowSub,Trend
-Nguyên Ngốc Nghếch,8366850906,8960000,HighView,LowSub,Trend
-Dung ABC,5408793928,8440000,LowView,LowSub,NotViral
-Hau Hoang,3637291155,8360000,LowView,LowSub,NotViral
-MixiGaming,4112993181,8200000,LowView,LowSub,NotViral
-ANTV - Truyền hình Công an Nhân dân,4472104548,8090000,LowView,LowSub,NotViral
-Gardening and Bonsai,1722345,8040000,LowView,LowSub,NotViral
-Chang Dory,3503396051,7980000,LowView,LowSub,NotViral
-SlenderMan™,6878909763,7680000,HighView,LowSub,Trend
-POPS Anime,6156161689,7580000,HighView,LowSub,Trend
-Sóc Phạm Channel,3835441189,7440000,LowView,LowSub,NotViral
-VBP Satisfying,7133863115,7410000,HighView,LowSub,Trend
-RedhoodVN,3292473866,7390000,LowView,LowSub,NotViral
-FLife TV,2653466540,7150000,LowView,LowSub,NotViral
-5 PHÚT THỦ CÔNG,2648336342,7030000,LowView,LowSub,NotViral
-HTV Entertainment,2595858492,7010000,LowView,LowSub,NotViral
-Vanh Leg,1517555914,6970000,LowView,LowSub,NotViral
-BabyDuck,4677789534,6900000,LowView,LowSub,NotViral
-Ghiền Mì Gõ,4452933260,6890000,LowView,LowSub,NotViral
-Heo Con,2555077914,6850000,LowView,LowSub,NotViral
-Nhạc Việt Tuyển Chọn,55412853,113000,LowView,HighSub,OutMeta
+name,category,views,subscribers,Pred_View,Pred_Sub,FinalLabel
+Zach Choi,FOOD,14061528175,33300000,HighView,HighSub,Viral
+Nick DiGiovanni,FOOD,14022406450,29300000,HighView,HighSub,Viral
+albert_cancook,FOOD,24213546295,27600000,HighView,HighSub,Viral
+Lang Lieu,FOOD,7066513304,9240000,HighView,HighSub,Viral
+Chef Rush,FOOD,4000525717,8460000,HighView,HighSub,Viral
+Uncle Roger Shorts,FOOD,3740607265,7050000,HighView,HighSub,Viral
+Cooking with Kian,FOOD,1450499871,5340000,HighView,HighSub,Viral
+cookingWITHfred,FOOD,3708166474,5160000,HighView,HighSub,Viral
+Bà Tân Vlog,FOOD,1125036908,4550000,HighView,HighSub,Viral
+NamCook 남쿡,FOOD,3157339521,4220000,HighView,HighSub,Viral
+Khoai Lang Thang,FOOD,820419147,3050000,HighView,HighSub,Viral
+MOGUMOGU - Food Entertainment - モグモグ,FOOD,1207665379,1770000,HighView,HighSub,Viral
+HÔM NAY ĂN GÌ,FOOD,925493354,1090000,HighView,LowSub,Trend
+Hương Vị Quê Hương,FOOD,137568231,941000,LowView,LowSub,NotViral
+Big Nibbles,FOOD,772060100,917000,LowView,LowSub,NotViral
+VNT FOOD & TRAVEL,FOOD,411896995,750000,LowView,LowSub,NotViral
+Quan không gờ,FOOD,100464669,440000,LowView,LowSub,NotViral
+PM FOOD TRAVEL,FOOD,185983755,429000,LowView,LowSub,NotViral
+Nguyên Hí Mắt To,FOOD,447967674,395000,LowView,LowSub,NotViral
+wowsung (woossi),FOOD,102513549,220000,LowView,LowSub,NotViral
+ToRung,KID,13125616031,59400000,HighView,HighSub,Viral
+H&T Official,KID,14415829058,25800000,HighView,HighSub,Viral
+Like Nastya VNM,KID,13508219998,23000000,HighView,HighSub,Viral
+POPS Kids,KID,14979220061,19800000,HighView,HighSub,Viral
+Trần Thị Thu Trang,KID,8135476602,18400000,HighView,HighSub,Viral
+BingGo Leaders,KID,23597379494,18000000,HighView,HighSub,Viral
+Kênh Thiếu Nhi - BHMEDIA,KID,13089500213,14500000,HighView,HighSub,Viral
+TonyTV,KID,10261168106,11300000,HighView,HighSub,Viral
+T-STUDIO,KID,1563926893,10500000,LowView,HighSub,Developing
+Thơ Nguyễn,KID,6678070097,10500000,LowView,HighSub,Developing
+Phung An Family,KID,4552716655,10400000,LowView,HighSub,Developing
+BiBoBen Shorts,KID,13494032323,10000000,HighView,HighSub,Viral
+Kam Family,KID,6534961153,9530000,LowView,LowSub,NotViral
+BabyBus - Nhạc thiếu nhi,KID,9966141281,9400000,HighView,HighSub,Viral
+Nguyên Ngốc Nghếch,KID,8403463906,8970000,LowView,LowSub,NotViral
+POPS Anime,KID,6164073132,7590000,LowView,LowSub,NotViral
+Sóc Phạm Channel,KID,3835472691,7440000,LowView,LowSub,NotViral
+VBP Satisfying,KID,7134942511,7410000,LowView,LowSub,NotViral
+FLife TV,KID,2664218024,7170000,LowView,LowSub,NotViral
+5 PHÚT THỦ CÔNG,KID,2648866499,7030000,LowView,LowSub,NotViral
+Sơn Tùng M-TP Official,MUSIC,3437741608,11500000,HighView,HighSub,Viral
+Hau Hoang,MUSIC,3638349505,8360000,HighView,HighSub,Viral
+Vanh Leg,MUSIC,1517802876,6970000,HighView,HighSub,Viral
+ST.319 Entertainment,MUSIC,1445565627,1940000,HighView,HighSub,Viral
+JustaTeeMusic,MUSIC,1079978498,1390000,HighView,HighSub,Viral
+Vũ Official,MUSIC,785258013,1330000,HighView,HighSub,Viral
+Hà Anh Tuấn,MUSIC,583524330,1060000,HighView,HighSub,Viral
+Trịnh Thăng Bình Official,MUSIC,451604684,642000,HighView,HighSub,Viral
+Hoàng Dũng,MUSIC,459483629,555000,HighView,HighSub,Viral
+Isaac Official,MUSIC,194165770,543000,HighView,HighSub,Viral
+Andiez Official,MUSIC,509018360,524000,HighView,HighSub,Viral
+TRUNG QUÂN,MUSIC,548223882,511000,HighView,HighSub,Viral
+VĂN MAI HƯƠNG OFFICIAL,MUSIC,311361181,375000,HighView,HighSub,Viral
+JayKii OFFICIAL,MUSIC,169485740,257000,LowView,LowSub,NotViral
+14 Casper,MUSIC,197445830,155000,LowView,LowSub,NotViral
+Nhạc Việt Tuyển Chọn,MUSIC,55422343,113000,LowView,LowSub,NotViral
+Mounter,MUSIC,65030684,72000,LowView,LowSub,NotViral
+Trạm Cảm Xúc,MUSIC,95077843,61700,LowView,LowSub,NotViral
+Thanh Bình,MUSIC,136912122,52200,LowView,LowSub,NotViral
+TAMA,MUSIC,21099443,26000,LowView,LowSub,NotViral
+Gate Smashers,TECH,740128043,2520000,HighView,HighSub,Viral
+Tech With Tim,TECH,190755010,1890000,HighView,HighSub,Viral
+Tinh tế,TECH,597486820,1030000,HighView,HighSub,Viral
+Duy Luân Dễ Thương,TECH,158282253,469000,HighView,HighSub,Viral
+Dũng Lại Lập Trình,TECH,36874539,456000,HighView,HighSub,Viral
+Microsoft Azure,TECH,39451327,349000,HighView,HighSub,Viral
+Sajjaad Khader,TECH,32364580,200000,HighView,HighSub,Viral
+TITV,TECH,22893892,117000,HighView,HighSub,Viral
+Việt Nguyễn AI,TECH,5137759,117000,HighView,HighSub,Viral
+DevOps Cloud and AI Labs,TECH,5125563,88000,HighView,HighSub,Viral
+Maz Học Data,TECH,2360169,78100,HighView,HighSub,Viral
+Mì AI,TECH,2716990,47300,HighView,HighSub,Viral
+Data Guy Story,TECH,550029,19800,LowView,HighSub,Developing
+CODE ROOM,TECH,830103,11400,LowView,LowSub,NotViral
+Tờ Mờ Sáng học Lập trình,TECH,341083,7470,LowView,LowSub,NotViral
+Long Tran,TECH,437325,6380,LowView,LowSub,NotViral
+Quoc S Nguyen Huu,TECH,691968,5150,LowView,LowSub,NotViral
+Mai DE,TECH,223379,3780,LowView,LowSub,NotViral
+ITviec,TECH,12206582,2680,HighView,LowSub,Trend
+CLB Bắt Trăn - LT Python,TECH,101993,1120,LowView,LowSub,NotViral

@@ -1,6 +1,7 @@
 import os
-import warnings
 import json
+import sqlite3
+import warnings
 from time import sleep
 from dotenv import load_dotenv
 from typing import List, Optional, Dict
@@ -15,12 +16,19 @@ API_KEYS = [os.getenv(f"API_KEY_{i}") for i in range(1, 6) if os.getenv(f"API_KE
 
 import json
 
-def load_channel_ids(path="D:\Quan\Practice_Data\my_flask_app\channel.json"):
+def load_channel_groups(path="D:\\Quan\\Practice_Data\\my_flask_app\\channel.json"):
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    return list(set(data.get("channels", [])))  # bỏ trùng ID
+    
+    # Lấy từng nhóm (trả về dict)
+    channel_groups = {}
+    for key, ids in data.items():
+        if isinstance(ids, list):  # chỉ lấy các list
+            channel_groups[key] = list(set(ids))  # bỏ trùng ID
 
-DEFAULT_CHANNEL_IDS = load_channel_ids()
+    return channel_groups
+
+DEFAULT_CHANNEL_GROUPS = load_channel_groups()
 
 
 def build_youtube_client(api_key: str):
@@ -48,71 +56,108 @@ def fetch_channel_infos(api_key: Optional[str] = None, channel_ids: Optional[Lis
     if not key:
         raise RuntimeError("No YouTube API key configured.")
 
-    yt = build_youtube_client(key)
-    ids = list(channel_ids or DEFAULT_CHANNEL_IDS)
+    key_index = 0
+    yt = build_youtube_client(keys[key_index])
 
-    print(f"📡 Fetching data for {len(ids)} channels...")
+    all_data = []
 
-    resp = rate_limited_request(
-        yt.channels().list(part="snippet,statistics", id=",".join(ids))
-    )
-    items = resp.get("items", [])
-    out = []
-    for item in items:
-        cid = item.get("id")
-        cname = item.get("snippet", {}).get("title")
-        stats = item.get("statistics", {})
+    for group_name, ids in DEFAULT_CHANNEL_GROUPS.items():
+        print(f"\n==============================")
+        print(f"📂 Nhóm: {group_name} ({len(ids)} kênh)")
+        print(f"==============================")
 
-        print(f"\n📊 Fetching data for: {cname}")
+        # API chỉ cho phép lấy tối đa 50 ID / 1 request
+        for i in range(0, len(ids), 50):
+            batch = ids[i:i + 50]
 
-        # Lấy video mới nhất
-        uploads_resp = rate_limited_request(
-            yt.search().list(
-                part="id",
-                channelId=cid,
-                order="date",
-                maxResults=1
-            )
-        )
-        video_items = uploads_resp.get("items", [])
-        video_id = video_items[0]["id"]["videoId"] if video_items else None
-
-        like_count, comment_count = 0, 0
-        if video_id:
-            video_resp = rate_limited_request(
-                yt.videos().list(
-                    part="statistics",
-                    id=video_id
+            try:
+                resp = rate_limited_request(
+                    yt.channels().list(part="snippet,statistics,contentDetails", id=",".join(batch))
                 )
-            )
-            v_stats = video_resp["items"][0]["statistics"]
-            like_count = int(v_stats.get("likeCount", 0))
-            comment_count = int(v_stats.get("commentCount", 0))
-        data = {
-            "channel_id": item.get("id"),
-            "name": item.get("snippet", {}).get("title"),
-            "subscribers": int(stats.get("subscriberCount", 0) or 0),
-            "views": int(stats.get("viewCount", 0) or 0),
-            "videos": int(stats.get("videoCount", 0) or 0),
-            "likes": int(like_count),
-            "comments": int(comment_count)
-        }
-        out.append(data)
+            except Exception as e:
+                print(f"❌ Lỗi với batch {i//50 + 1}: {e}")
+                # thử đổi API key khác nếu còn
+                key_index = (key_index + 1) % len(keys)
+                yt = build_youtube_client(keys[key_index])
+                continue
 
-        # 🔹 Lưu vào database
-        save_channel_stats(
-            channel_id=data["channel_id"],
-            name=data["name"],
-            subs=data["subscribers"],
-            views=data["views"],
-            videos=data["videos"],
-            likes=data["likes"],
-            comments=data["comments"],
-        )
+            for item in resp.get("items", []):
+                cid = item.get("id")
+                snippet = item.get("snippet", {})
+                stats = item.get("statistics", {})
+                details = item.get("contentDetails", {})
 
-    return out
+                data = {
+                    "group": group_name,
+                    "channel_id": cid,
+                    "name": snippet.get("title"),
+                    "customUrl": snippet.get("customUrl"),
+                    "description": snippet.get("description"),
+                    "country": snippet.get("country") or "N/A", 
+                    "publishedAt": snippet.get("publishedAt"), # chưa cập nhật vào DB
+                    "thumbnails": snippet.get("thumbnails"), # chưa cập nhật vào json
+                    "subscribers": int(stats.get("subscriberCount", 0) or 0),
+                    "views": int(stats.get("viewCount", 0) or 0),
+                    "videos": int(stats.get("videoCount", 0) or 0),
+                    "likes": int(stats.get("likeCount", 0)) if "likeCount" in stats else None, # chưa lấy được
+                    "comments": int(stats.get("commentCount", 0)) if "commentCount" in stats else None, # chưa lấy được
+                    "relatedPlaylists": details.get("relatedPlaylists", {}), # chưa cập nhật vào json
+                }
+
+                print(
+                    f"📊 {data['name']:<40} | 👥 Subs: {data['subscribers']:<10} | 👀 Views: {data['views']:<10} | 🎞 Videos: {data['videos']:<10} | 🗺️ Country: {'country':<10}"
+                )
+
+                # ✅ Lưu vào DB
+                save_channel_stats(
+                    channel_id=data["channel_id"],
+                    name=data["name"],
+                    subs=data["subscribers"],
+                    views=data["views"],
+                    videos=data["videos"],
+                    likes=data["likes"],
+                    comments=data["comments"],
+                    category=data["group"],
+                    country=data["country"],
+                )
+
+                all_data.append(data)
+
+    return all_data
+
 
 if __name__ == "__main__":
     data = fetch_channel_infos()
     print("✅ Fetched data:")
-    print(data)
+    print(f"→ Tổng số kênh: {len(data)}")
+
+    # --- Gán category cho từng channel ---
+    conn = sqlite3.connect("youtube_stats.db")
+    cursor = conn.cursor()
+    for category, channels in DEFAULT_CHANNEL_GROUPS.items():
+        for ch_id in channels:
+            cursor.execute(
+                "UPDATE Channel_Stats SET category = ? WHERE channel_id = ?",
+                (category.replace("_channels", "").upper(), ch_id)
+            )
+    conn.commit()
+    conn.close()
+    print("✅ Category assigned successfully to each channel.")
+
+    # --- Chỉ lấy 4 thông tin cần thiết ---
+    simple_data = [
+        {
+            "name": ch["name"],
+            "customUrl": ch.get("customUrl", ""),
+            "description": ch.get("description", ""),
+            "thumbnails": ch.get("thumbnails", ""),
+        }
+        for ch in data
+    ]
+
+    # --- Ghi ra file JSON ---
+    output_path = "channels_info.json"
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(simple_data, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ Đã lưu danh sách kênh (name, description, thumbnail) vào {output_path}")

@@ -1,20 +1,49 @@
 {
-  "channels": [
-    "UCXbYlU08sOTBktOtjVsvR6w", "UCbGPgvNunvclTypPtL3sa0w", "UC5ezaYrzZpyItPSRG27MLpg",
-    "UCYCh5_-In6wtzWR-s_kM03w", "UClK8w-hLJlhR6fL5_xQg_VA", "UCVhoKlfJtHesO0m5rlw7-5Q",
-    "UCvjOPaJZjDkgSkXsfAchSwQ", "UC7JqmPfPHcfHKN7ZOZCflKQ", "UC6eq3sR4CtbvGdmInchzWUA",
-    "UC0jDoh3tVXCaqJ6oTve8ebA", "UClyA28-01x4z60eWQ2kiNbA", "UCh6snexfUrSdwKGuiyDSe5g",
-    "UCkna2OcuN1E6u5I8GVtdkOw", "UCKl0tA90oEArasOGzp8I41g", "UCd0neB_LB1xpwIYDetX2qTg",
-    "UCo5OS1s56fEDwGS3NrEHGww", "UConnM5zwOP9vG_LPTYbRsAg", "UCZGcvm26TfY3g1EQ-ohXBvg",
-    "UCSJsjCiTl2lourZXnigVCoA", "UC7okHv98PUJ22elqdoSa8Mg", "UCshYjccpmjZjLQ_QctIy6ow",
-    "UCiZJtnTQunvoY0xgv-Ce_rg", "UCtsgnwfrFqtSaHPYolDKqcQ", "UCFMEYTv6N64hIL9FlQ_hxBw",
-    "UCj_Bs4eNZb-GfUFi5dh39kw", "UC7mc9-vty5WAeIYi0PIkONg", "UCA7QBnEDwHAEFTQpaNDT5Iw",
-    "UCGkKmrouK5VjiOgnlaBLq8w", "UCLeFsWiu95Q1SQWCTKVM4kQ", "UC7xgbM-xENzm-9818szp7Yg",
-    "UCbIZSalhHyz3RNWj2wowzdQ", "UCA_23dkEYToAc37hjSsCnXA", "UCIg56SgvoZF8Qg0Jx_gh6Pg",
-    "UCvx40puRxfQORHOs1YpLPkg", "UCylmjhICId9699lEWzQh9AQ", "UCtr3boXbtzcDAzY9b6M25NA",
-    "UCkgdDBHO7zl3tWIjldQeK7g", "UCPE7JVJQWGENJolF1CpPxfw", "UC_057ZNgx593EqACxk8tV2A",
-    "UC_-mvlzR-E0UNWs6O8TgThQ", "UCeqMTpWWdiA9wpEfKMFb4jg", "UClLz5ZzYuTMSMziJtwQ5fGA",
-    "UCbq8aOyj9ZtIqcD-0MwG1fQ", "UC4Jw36rrtdMdW99PeCtNwxA", "UCkHHRGuPLTSTbZTt-2TGB9Q",
-    "UCq6ApdQI0roaprMAY1gZTgw", "UCbm1H5lQ7TLMNwwJALinjww"
-  ]
+  "kid_channels": [ 
+    "UCXbYlU08sOTBktOtjVsvR6w", "UC5ezaYrzZpyItPSRG27MLpg", 
+    "UCYCh5_-In6wtzWR-s_kM03w", "UClK8w-hLJlhR6fL5_xQg_VA", 
+    "UCvjOPaJZjDkgSkXsfAchSwQ", "UC7JqmPfPHcfHKN7ZOZCflKQ", 
+    "UC6eq3sR4CtbvGdmInchzWUA", "UCKl0tA90oEArasOGzp8I41g", 
+    "UCZGcvm26TfY3g1EQ-ohXBvg", "UCSJsjCiTl2lourZXnigVCoA", 
+    "UC7okHv98PUJ22elqdoSa8Mg", "UCtsgnwfrFqtSaHPYolDKqcQ", 
+    "UCj_Bs4eNZb-GfUFi5dh39kw", "UCA7QBnEDwHAEFTQpaNDT5Iw", 
+    "UCLeFsWiu95Q1SQWCTKVM4kQ", "UCkgdDBHO7zl3tWIjldQeK7g", 
+    "UCPE7JVJQWGENJolF1CpPxfw", "UC_057ZNgx593EqACxk8tV2A", 
+    "UCeqMTpWWdiA9wpEfKMFb4jg", "UClLz5ZzYuTMSMziJtwQ5fGA"],
+
+  "tech_channels": [ 
+    "UCYHKeGCNDpgbof7uPXrEWbQ", "UCJyFSUw_JqSJ4pu6JMlLwYg", 
+    "UCQ0jSGgYMLmRMeTE6UaPPXg", "UCYthAQ3bcGr57M_ag5gHDvQ", 
+    "UCClTa_jbo8yksWrtJJBejVw", "UCm0HVDSx2sq689m7afhlwMQ", 
+    "UCBEhV7ox2uVnVdHDDz69H6g", "UC0xBYqWa3wZ6yL_Ky9jBGmA", 
+    "UC66_4puPl1OFS3YAeZ7tRdw", "UC365cnQJJlXu9WO0o0bzEQw", 
+    "UCMYT8xymrm4VOP241b86MCQ", "UCsaMhjnuR34WAeqEqpEVBSw", 
+    "UC4JX40jDee_tINbkjycV4Sg", "UCyQobySFx_h9oFwsBV0KGdg", 
+    "UCYDlBuxE7BEtYR5r4q3WRrQ", "UC7zZ2-Q_oxbUaoMVL0z51wg",
+    "UCJihyK0A38SZ6SdJirEdIOw", "UC0m-80FnNY2Qb7obvTL_2fA", 
+    "UCv-xyS0YxYCrEoMFH_cgcoQ", "UCPoFgUtKUYpL7N7883BeMFw"],
+
+  "food_channels": [ 
+    "UCGkKmrouK5VjiOgnlaBLq8w", "UCK1b1IFoXmSLDvTrfTUNEhA", 
+    "UCLCnaHLXHpHz1atQkyi7ZsQ", "UCT7aiCHgDM-knR4E-UBBvgA", 
+    "UCZE88kYvCKUKjM-G0uc8Duw", "UCVEa49SSGKMXv1JrcEoEx_A", 
+    "UCS7soN7zF03VQ3RFSOv7a5Q", "UC5wIXexTJS-sZp0ALjtkPkQ", 
+    "UCMyOj6fhvKFMjxUCp3b_3gA", "UCA1Aytg9Rvn_krFQGv9XDRA", 
+    "UCPPoLs8u8AfY-cyWaXrCHVw", "UCTfRGOkNp1Fx8OmTx9Rg7Kw", 
+    "UC0NkSnlCOhoODbykzZwpiDw", "UCfiOvlU7hCGHl_yP_ddfyRw", 
+    "UCSd6xd7dKy9mb0JhHGpyOIQ", "UCJFGFsECyWh0iHRVW2QQSkA", 
+    "UCZnEb05GaAdBbMv4XjBZbaw", "UCOrCugMRzX49mVUjM2jEu9w", 
+    "UClfLmmxQVEX8SauwFlfPpog", "UCI78AdiI6f7VKhqW1i4B3Rw"], 
+
+  "music_channels": [ 
+    "UClyA28-01x4z60eWQ2kiNbA", "UCshYjccpmjZjLQ_QctIy6ow", 
+    "UCbIZSalhHyz3RNWj2wowzdQ", "UC4Jw36rrtdMdW99PeCtNwxA", 
+    "UCq3s8x6TAWfeBC5q_zaGMYw", "UCVsnRgnAXQb5YErd47-q9Fw",
+    "UC_co3630cg5w1zSOF2yt8pA", "UCS0Dai12I5Q3n93ILlXSDig", 
+    "UCLgCMwVcSV3H62EoSYt6cSQ", "UCZzKnnb8ENdw1AFrK8xLDDg", 
+    "UCePWSQHSdXqzQlzyJfwY1Jg", "UC_Eqg-tBPUUvA0heBZfdu6Q", 
+    "UC1FBkKvvTRfKLHAfK2dJstA", "UCyI1M6xD98eZxAe_gyGsBkA", 
+    "UCmku9gpiNHDm_xKFuRdagFg", "UCjgulYNN03ukLZUmkxI1RJw", 
+    "UCSnVteUNlhr1SqCjTQx0PDQ", "UCKhqOj4gSTegq0kk3hFXw1A", 
+    "UCV7qWy2FoFZ4v4p1x_R-n3Q", "UCtUKAHDQsXVkSWCwORISImA"]
 }

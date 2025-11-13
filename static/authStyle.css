@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.app-header img {
+  height: 40px;
+}
+
+.app-header span {
+  color: #c4302b;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #b3362d;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background: #b3362d;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #8c281f;
+}
+
+.toggle {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.toggle a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Các trạng thái */
+.message.success {
+  color: #0b5f0b;         /* chữ xanh đậm */
+  background: #e6f6e6;    /* nền nhẹ xanh */
+  border: 1px solid #c3e6c3;
+}
+
+.message.info {
+  color: #0b56a6;         /* chữ xanh dương */
+  background: #eaf4ff;    /* nền nhẹ */
+  border: 1px solid #cfe9ff;
+}
+
+.message.error {
+  color: #8b0000;         /* chữ đỏ đậm */
+  background: #ffecec;    /* nền nhẹ đỏ */
+  border: 1px solid #f5c2c2;
+}
+

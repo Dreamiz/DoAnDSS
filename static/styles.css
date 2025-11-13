@@ -1,149 +1,326 @@
-/* ========== RESET & GLOBAL ========== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+      /* ========== RESET & GLOBAL ========== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-/* ========== HEADER ========== */
-header {
-  background-color: #c0392b;
-  color: white;
-  text-align: center;
-  padding: 25px 10px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-}
+      /* ========== HEADER ========== */
+      header {
+        background-color: #c0392b;
+        color: white;
+        text-align: center;
+        padding: 25px 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      }
 
-header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-}
+      header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
 
-.subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
-}
+      /* .subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+      } */
 
-/* ========== MAIN CONTAINER ========== */
-main.container {
-  flex: 1;
-  padding: 40px 60px;
-  background-color: #e6e6e6; /* màu xám nhẹ nền container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
 
-/* ========== SUMMARY (Thống kê tổng quan) ========== */
-.summary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
+      /*nav bar with menu button*/
+      .navbar {
+      background-color: #b60707; 
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+    }
 
-.stat-card {
-  background: white;
-  border-radius: 12px;
-  padding: 25px 60px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    /* Nút 3 gạch */
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
+    /* Sidebar ẩn bên trái */
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      background-color: #ffffff;
+      position: fixed;
+      top: 0;
+      left: -250px; /* ẩn ra ngoài khung nhìn */
+      transition: left 0.3s ease;
+      padding-top: 60px;
+      z-index: 1001;
+    }
 
-.stat-card h3 {
-  font-size: 1.1rem;
-  color: #555;
-}
+    /* Khi bật menu */
+    .sidebar.open {
+      left: 0;
+    }
 
-.stat-card p {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #222;
-  margin-top: 8px;
-}
+    /* Danh sách menu */
+    .sidebar a {
+      display: block;
+      color: rgb(0, 0, 0);
+      padding: 15px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-/* ========== CHARTS SECTION ========== */
-.charts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 30px;
-  width: 100%;
-  max-width: 1200px;
-}
+    .sidebar a:hover {
+      background-color: #b3362d; /* đỏ */
+      color: white; /* ✅ chữ trắng */
+    }
 
-.chart-card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
+    /* Khi được chọn (active) */
+    .sidebar a.active {
+      background-color: #b3362d;
+      color: white;
+    }
 
-.chart-card:hover {
-  transform: scale(1.01);
-}
+    /* Overlay làm mờ nền khi mở menu */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000; /* ✅ nằm dưới sidebar nhưng trên nội dung */
+    }
 
-.chart-card h2 {
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .overlay.show {
+      display: block;
+    }
 
-canvas {
-  width: 100%;
-  height: 320px;
-}
+    /* USER SECTION */
+    .user-section {
+      position: relative;
+    }
 
-/* Bao ngoài hai biểu đồ và nút */
-.charts-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 2rem;
-}
+    .user-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: rgb(0, 0, 0);
+      text-align: left;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.3s;
+    }
 
-/* Nút căn giữa bên dưới */
-#toggleRankBtn {
-  position: absolute;
-  bottom: -3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #224bd3;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.6rem 1.4rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
-}
+    .user-btn:hover {
+      background-color: #b3362d;
+      color: white;
+    }
 
-#toggleRankBtn:hover {
-  background-color: #1d37b7;
-  transform: translateX(-50%) translateY(-2px);
-}
+    /* Dropdown menu */
+    .user-dropdown {
+      display: none;
+      flex-direction: column;
+      background-color: #ffffff;
+    }
+
+    .user-dropdown a {
+      color: #000000;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    .user-dropdown a:hover {
+      background-color: #b3362d;
+      color: white;
+    }
+
+    /* Khi mở dropdown */
+    .user-dropdown.show {
+      display: flex;
+    }
+
+
+      /* ========== MAIN CONTAINER ========== */
+      main.container {
+        flex: 1;
+        padding: 40px 60px;
+        background-color: #e6e6e6; /* màu xám nhẹ nền container */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      /* ========== SUMMARY (Thống kê tổng quan) ========== */
+      .summary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px 60px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-card h3 {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .stat-card p {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #222;
+        margin-top: 8px;
+      }
+
+      /* ========== CHARTS SECTION ========== */
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .chart-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+      }
+
+      .chart-card:hover {
+        transform: scale(1.01);
+      }
+
+      .chart-card h2 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      canvas {
+        width: 100%;
+        height: 320px;
+        cursor: pointer;
+      }
+
+      /* Bao ngoài hai biểu đồ và nút */
+      .charts-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin-top: 2rem;
+      }
+
+      /* Nút căn giữa bên dưới */
+      #toggleRankBtn {
+        position: absolute;
+        bottom: -4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #246bde;
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.6rem 1.4rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+      }
+
+      #toggleRankBtn:hover {
+        background-color: #2e67e1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+
+      .chart-controls {
+        display: flex;
+        left: 50%;
+        flex-direction: column;
+        align-items: center; /* căn giữa ngang */
+        justify-content: center;
+        margin: 20px auto;
+        gap: 8px;
+      }
+
+      .num-label {
+        position: absolute;
+        bottom: 1.7rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.6rem 1.4rem;
+        border: none;
+        border-radius: 10px;
+      }
+
+      #numInput {
+        position: absolute;
+        bottom: -0.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.6rem 1.4rem;
+        border: none;
+        border-radius: 10px;
+      }
+
+      #numInput:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+      }
+
+      #help-btn {
+        background: transparent;
+        border: 2px solid #888;
+        color: #333;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      #help-btn:hover {
+        background-color: #f0f0f0;
+        border-color: #555;
+      }
+
 
 /* ==== BẢNG TOP LIST ==== */
       .toplist-section {
@@ -215,15 +392,223 @@ canvas {
         font-weight: bold;
       }
 
-      .NotViral {
+      .Developing {
         color: #ffc107;
         font-weight: bold;
       }
 
-      .OutMeta {
+      .NotViral {
         color: #ff0707;
         font-weight: bold;
       }
+
+      .label-header {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* căn giữa nếu muốn, có thể đổi thành flex-start */
+        gap: 4px; /* khoảng cách giữa chữ và nút ? */
+      }
+
+      .label-header button {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        font-weight: bold;
+        line-height: 18px;
+        transition: background-color 0.2s;
+      }
+
+      .label-header button:hover {
+        background-color: #555;
+      }
+
+
+
+      /* Nút "?" trong header */
+      .result-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      .result-table th, .result-table td {
+        padding: 10px;
+      }
+
+      .label-cell {
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;       /* tăng kích thước chữ */
+      }
+
+      /* Mỗi trạng thái một màu riêng */
+      .label-viral {
+        color: #2E7D32;        /* xanh lá */
+      }
+
+      .label-trend {
+        color: #1565C0;        /* xanh lam */
+      }
+
+      .label-developing {
+        color: #F9A825;        /* vàng */
+      }
+
+      .label-notviral {
+        color: #D32F2F;        /* đỏ */
+      }
+
+      #help-btn {
+        background: #222;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      #help-btn:hover {
+        background: #555;
+      }
+
+      #help-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        display: none;
+      }
+
+      #help-popup.show {
+        display: block;
+      }
+
+      .popup-content button {
+        margin-top: 10px;
+      }
+
+
+      .label-filters {
+        margin-bottom: 10px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .label-filters {
+        margin: 15px 0;
+        display: flex;
+        gap: 15px; /* 👉 Tăng khoảng cách giữa các nút */
+        justify-content: center;
+        flex-wrap: wrap; /* Đảm bảo không tràn dòng */
+      }
+
+      /* --- Nút Viral --- */
+      .viral-filter-btn {
+        background-color: #069d13;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        font-size: 1rem;
+      }
+      .viral-filter-btn:hover {
+        background-color: #048c11; /* đậm hơn */
+        transform: scale(1.05);
+      }
+
+      /* --- Nút Trend --- */
+      .trend-filter-btn {
+        background-color: #2872d9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        font-size: 1rem;
+      }
+      .trend-filter-btn:hover {
+        background-color: #1f5fbb;
+        transform: scale(1.05);
+      }
+
+      /* --- Nút Developing --- */
+      .developing-filter-btn {
+        background-color: #eeca15;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        font-size: 1rem;
+      }
+      .developing-filter-btn:hover {
+        background-color: #d4b610;
+        transform: scale(1.05);
+      }
+
+      /* --- Nút NotViral --- */
+      .notviral-filter-btn {
+        background-color: #e6320e;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        font-size: 1rem;
+      }
+      .notviral-filter-btn:hover {
+        background-color: #c22b0d;
+        transform: scale(1.05);
+      }
+
+      /* --- Khi được chọn (active) --- */
+      .filter-btn.active {
+        box-shadow: 0 0 8px rgba(0, 168, 255, 0.7);
+        transform: scale(1.05);
+      }
+
+      /* --- Hiệu ứng highlight bảng --- */
+      .highlight-row {
+        background-color: rgba(0, 168, 255, 0.15);
+      }
+
+      .dim-row {
+        opacity: 0.3;
+      }
+
+      .filter-btn:active {
+        transform: scale(0.97);
+      }
+
+
+/*footer nav bar*/
+      .navbarf {
+      background-color: #b60707; 
+      color: white;
+      padding: 26px 20px;
+      display: flex;
+      align-items: center;
+    }
 
 /* ========== FOOTER ========== */
 footer {

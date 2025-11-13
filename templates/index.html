@@ -16,8 +16,40 @@
   <body>
     <header>
       <h1>📊 YouTube Channel Statistics Dashboard</h1>
-      <p class="subtitle">Theo dõi lượt xem và người đăng ký theo thời gian thực</p>
+      <!-- <p class="subtitle">Theo dõi lượt xem và người đăng ký theo thời gian thực</p> -->
     </header>
+
+    <nav class="navbar">
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+    <h2 style="margin-left: 12px;"></h2>
+    </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="user-section">
+      {% if user %}
+        <button class="user-btn" onclick="toggleUserMenu()">👤 {{ user }} ▾</button>
+        <div class="user-dropdown" id="userMenu">
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      {% else %}
+        <button class="user-btn" onclick="toggleUserMenu()">👤 Guest ▾</button>
+        <div class="user-dropdown" id="userMenu">
+          <a href="{{ url_for('auth', mode='login') }}">Login</a>
+          <a href="{{ url_for('auth', mode='register') }}">Register</a>
+        </div>
+      {% endif %}
+    </div>
+
+
+    <a href="#">Trang chủ</a>
+    <a href="#">Thống kê kênh</a>
+    <a href="#">Phân tích video</a>
+    <a href="#">Cài đặt</a>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
 
     <main class="container">
       <!-- Thông tin tổng quan -->
@@ -42,50 +74,104 @@
       <!-- Biểu đồ -->
       <section class="charts-wrapper">
         <div class="charts">
-        <div class="chart-card">
-          <h2>📈 Biểu đồ lượt xem</h2>
-          <canvas id="viewsChart"></canvas>
-        </div>
 
-        <div class="chart-card">
-          <h2>👥 Biểu đồ người đăng ký</h2>
-          <canvas id="subsChart"></canvas>
-        </div>
+          <div class="chart-card">
+            <h2>📈 Biểu đồ lượt xem</h2>
+            <canvas id="viewsChart"></canvas>
+          </div>
 
-        <div class="toggle-button-container">
-        <button id="toggleRankBtn" class="btn btn-secondary">Xem kênh thấp nhất</button>
-        </div>
+          <div class="chart-card">
+            <h2>👥 Biểu đồ người đăng ký</h2>
+            <canvas id="subsChart"></canvas>
+          </div>
+
+          <div class="toggle-button-container">
+            <div class="chart-controls">
+              <label for="numInput" class="num-label"><strong>Nhập số kênh muốn xem:</strong></label>
+              <input type="number" id="numInput" value="5" min="1" max="50" style="width:80px; margin-right:10px;"> 
+            </div>
+
+            <div>
+              <button id="toggleRankBtn" class="btn btn-primary">Xem kênh thấp nhất</button>
+            </div>            
+          </div>
+          
         </div>
       </section>
 
       <!-- Bảng Top List -->
       <section class="toplist-section">
         <h2>🏆 Danh sách các kênh được gán nhãn</h2>
+
+      <!-- ✅ Bộ lọc thể loại theo chủ đề -->
+        <form method="GET" action="/" class="filter-form">
+          <label for="category"><strong>Chọn thể loại:</strong></label>
+          <select name="category" id="category" onchange="this.form.submit()">
+            <option value="ALL" {% if not selected_category or selected_category == 'ALL' %}selected{% endif %}>
+              -- All --
+            </option>
+            <option value="KID" {% if selected_category == 'KID' %}selected{% endif %}>Kid</option>
+            <option value="MUSIC" {% if selected_category == 'MUSIC' %}selected{% endif %}>Music</option>
+            <option value="TECH" {% if selected_category == 'TECH' %}selected{% endif %}>Tech</option>
+            <option value="FOOD" {% if selected_category == 'FOOD' %}selected{% endif %}>Food</option>
+          </select>
+        </form>
+
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Tên kênh</th>
-                <th>Lượt xem</th>
-                <th>Đăng ký</th>
-                <th>Final Label</th>
+                <th style="padding-left: 45px;">Channels</th>
+                <th style="padding-left: 45px;">Views</th>
+                <th style="padding-left: 10px;">Subscribers</th>
+                <th>
+                  <div class="label-header">
+                    <span>Final Label</span>
+                    <button id="help-btn" title="Giải thích nhãn">?</button>
+                  </div>
+                </th>
               </tr>
             </thead>
+
             <tbody>
               {% for row in data %}
               <tr>
-                <td>{{ row.name }}</td>
+                <td style="display: flex; align-items: center; gap: 10px;">
+                  <!-- Ảnh đại diện -->
+                  <img src="{{ row.thumbnails.default.url }}" alt="{{ row.name }}" width="40" height="40" style="border-radius: 50%;">
+
+                  <!-- Tên kênh (click dẫn link YouTube) -->
+                  <a href="https://youtube.com/{{ row.customUrl }}" 
+                    target="_blank" 
+                    style="text-decoration: none; color: #000000; font-weight: 500;">
+                    {{ row.name }}
+                  </a>
+                </td>
+
                 <td>{{ "{:,}".format(row.views) }}</td>
                 <td>{{ "{:,}".format(row.subscribers) }}</td>
                 <td class="{{ row.FinalLabel }}">{{ row.FinalLabel }}</td>
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
       </section>
 
+      <section>
+        <div class="label-filters">
+          <button class="filter-btn viral-filter-btn" data-label="Viral">Viral</button>
+          <button class="filter-btn trend-filter-btn" data-label="Trend">Trend</button>
+          <button class="filter-btn developing-filter-btn" data-label="Developing">Developing</button>
+          <button class="filter-btn notviral-filter-btn" data-label="NotViral">NotViral</button>
+        </div>
+      </section>
+
     </main>
+
+
+    <nav class="navbarf"></nav>
 
     <footer>
       <h3>Copyright ©DA_HK251_2025</h3>
